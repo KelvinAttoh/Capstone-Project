@@ -1,5 +1,3 @@
-# Capstone-Project
-
 # 🏥 Capstone Project
 ### Frailty Prediction, Social Participation And Malnutrition Analysis In Older Adults Americans Using ML And Statistical Modeling
 
