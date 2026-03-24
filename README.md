@@ -245,12 +245,12 @@ direct frailty derivatives removed before modelling (18 columns dropped).
 
 ### Machine Learning — Frailty Prediction
 
-| Model | Accuracy | F1 Weighted | F1 Macro | ROC-AUC |
-|-------|----------|-------------|----------|---------|
-| **XGBoost** ⭐ | **85.0%** | **0.85** | — | — |
-| Random Forest | 81.0% | 0.81 | — | — |
-| Logistic Regression | 81.0% | 0.81 | — | — |
-| SVM | 81.0% | 0.80 | — | — |
+| Model | Accuracy | F1 Weighted | 
+|-------|----------|-------------|
+| **XGBoost** ⭐ | **85.0%** | **0.85** |
+| Random Forest | 81.0% | 0.81 |
+| Logistic Regression | 81.0% | 0.81 | 
+| SVM | 81.0% | 0.80 |
 
 > ⭐ XGBoost selected as best model based on weighted F1-score.
 
