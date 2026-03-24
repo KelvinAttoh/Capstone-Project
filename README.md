@@ -80,7 +80,7 @@ All RQ analyses follow a two-model structure:
 
 > ⚠️ **Data Privacy Notice:** The datasets used in this project are not
 > publicly available in this repository due to data governance and privacy
-> considerations. See [`data/README.md`](data/README.md) for access information.
+> considerations. Contact me via LinkedIn for access.
 
 ### Overview
 
