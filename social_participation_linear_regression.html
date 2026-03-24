@@ -1,0 +1,800 @@
+
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+            font-size:13px;background:#0B1520;color:#B8CDE0;
+            border-radius:12px;padding:20px 24px;">
+
+  <div style="font-size:17px;font-weight:500;color:#D0E4F8;margin-bottom:4px;">
+    Social Participation Analysis — Multivariate Linear Regression
+  </div>
+  <div style="font-size:12px;color:#6A8AAA;margin-bottom:20px;">
+    Target: Social Participation Score (continuous 0–5) &nbsp;·&nbsp;
+    Stratified by Residence Type (0 = Rural, 1 = Urban) &nbsp;·&nbsp;
+    N = 7,086
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+    <div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#D0E4F8;">7,086</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Total N</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#5BA0E8;">2.632</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Mean SP Score</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#7BE8A8;">1.349</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">SD</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#EFB840;">3.0</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Median SP Score</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#3DC490;">1,185</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Rural (0)</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:10px 16px;">
+      <div style="font-size:22px;font-weight:500;color:#F0A030;">5,901</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Urban (1)</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:500;color:#6A8AAA;letter-spacing:0.07em;
+              text-transform:uppercase;margin-bottom:6px;">
+    Descriptive Table — Mean SP Score by Variable and Residence Type
+  </div>
+  <div style="font-size:11px;color:#6A8AAA;margin-bottom:10px;">
+    p-value per subset row = Mann-Whitney U test (subset vs all others) ·
+    Maximum Gait Speed p = Spearman correlation with SP Score
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;
+                border:0.5px solid #243447;border-radius:10px;
+                overflow:hidden;margin-bottom:20px;">
+    <thead>
+      <tr>
+        <th rowspan="2" style="background:#172335;color:#6A8AAA;font-size:11px;
+            font-weight:500;padding:8px 12px;text-align:left;
+            border-bottom:0.5px solid #243447;white-space:nowrap;">
+          Variable / Subset
+        </th>
+        <th colspan="4" style="background:#1A2E42;color:#5BA0E8;font-size:11px;
+            font-weight:500;padding:8px 10px;text-align:center;
+            border-bottom:0.5px solid #243447;">
+          Overall (N = 7,086)
+        </th>
+        <th colspan="4" style="background:#1A2A20;color:#3DC490;font-size:11px;
+            font-weight:500;padding:8px 10px;text-align:center;
+            border-bottom:0.5px solid #243447;">
+          Rural (n = 1,185)
+        </th>
+        <th colspan="4" style="background:#2A1F10;color:#F0A030;font-size:11px;
+            font-weight:500;padding:8px 10px;text-align:center;
+            border-bottom:0.5px solid #243447;">
+          Urban (n = 5,901)
+        </th>
+      </tr>
+      <tr>
+        <th style="background:#1A2E42;color:#5BA0E8;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">n</th><th style="background:#1A2E42;color:#5BA0E8;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Mean SP ± SD</th><th style="background:#1A2E42;color:#5BA0E8;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Median</th><th style="background:#1A2E42;color:#5BA0E8;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">p-value</th><th style="background:#1A2A20;color:#3DC490;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">n</th><th style="background:#1A2A20;color:#3DC490;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Mean SP ± SD</th><th style="background:#1A2A20;color:#3DC490;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Median</th><th style="background:#1A2A20;color:#3DC490;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">p-value</th><th style="background:#2A1F10;color:#F0A030;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">n</th><th style="background:#2A1F10;color:#F0A030;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Mean SP ± SD</th><th style="background:#2A1F10;color:#F0A030;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">Median</th><th style="background:#2A1F10;color:#F0A030;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">p-value</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Age Group
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Under 75 (Young-old)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,421</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.69 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#7BE8A8;">0.010</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">419</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.85 ± 1.25</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.142</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,002</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.66 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.034</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  75 and above (Middle/Oldest-old)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,665</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.60 ± 1.37</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#7BE8A8;">0.010</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">766</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.73 ± 1.37</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.142</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,899</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.58 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.034</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Gender
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Female</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,028</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.51 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">505</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.62 ± 1.27</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,523</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.49 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Male</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,058</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.72 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">680</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.89 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,378</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.69 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            BMI Score
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Normal / Underweight</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,416</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.58 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.013</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">364</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.71 ± 1.35</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.313</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,052</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.56 ± 1.36</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.033</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Overweight / Obese</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,670</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.66 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.013</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">821</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.80 ± 1.32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.313</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,849</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.63 ± 1.35</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.033</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Education Group
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  No High School</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,462</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.26 ± 1.29</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">667</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.50 ± 1.26</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,795</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.21 ± 1.29</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  High School and Above</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,624</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.99 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">518</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.13 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,106</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.96 ± 1.30</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Comorbidity Positive
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Low (< 4 diseases)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,550</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.86 ± 1.32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">411</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.07 ± 1.30</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,139</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.82 ± 1.32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  High (≥ 4 diseases)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,536</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.51 ± 1.35</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">774</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.62 ± 1.32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,762</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.48 ± 1.35</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Race/Ethnicity
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  White</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,286</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.86 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">932</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.87 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,354</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.86 ± 1.30</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Black</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,354</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.46 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">135</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.45 ± 1.24</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#7BE8A8;">0.004</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,219</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.46 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Hispanic</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,212</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.04 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">86</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.14 ± 1.28</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,126</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.03 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Other</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">230</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.49 ± 1.39</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.120</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.00 ± 1.14</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.302</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">198</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.41 ± 1.41</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#A8D8B8;">0.040</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Mixed</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.25 ± 1.50</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.303</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">—</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">—</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">—</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.25 ± 1.50</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#6A8AAA;">0.287</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Depression Screen Positive
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Not Depressed (PHQ-2 < 3)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">5,098</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.81 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">802</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.97 ± 1.30</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">4,296</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.78 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Depressed (PHQ-2 ≥ 3)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,988</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.17 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">383</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.36 ± 1.28</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,605</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.12 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Anxiety_Screen_Positive
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Not Anxious (GAD-2 < 3)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">6,298</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.72 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,041</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.86 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">5,257</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.69 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Anxious (GAD-2 ≥ 3)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">788</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1.96 ± 1.33</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">144</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.13 ± 1.31</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">644</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1.92 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Malnutrition Positive
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Not Malnourished</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,661</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.95 ± 1.28</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">554</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.10 ± 1.27</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,107</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.92 ± 1.28</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">  Malnourished</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">3,425</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.29 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">631</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.49 ± 1.32</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2,794</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.25 ± 1.34</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">2.0</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr>
+        <tr>
+          <td colspan="13" style="background:#172335;color:#D0E4F8;
+              font-weight:500;font-size:12px;padding:7px 12px;
+              border-bottom:0.5px solid #243447;text-align:left;">
+            Maximum Gait Speed
+          </td>
+        </tr><tr>
+          <td style="padding:7px 10px 7px 18px;font-size:12px;color:#C0D4E8;
+              background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">  Mean ± SD (Gait Speed)</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">6,344</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">0.765 ± 0.261</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;"><span style="color:#4CD890;background:#0A2818;border-radius:3px;">ρ = 0.265</span></td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">1,063</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">0.774 ± 0.250</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;"><span style="color:#4CD890;background:#0A2818;border-radius:3px;">ρ = 0.274</span></td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">5,281</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;">0.764 ± 0.263</td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;font-variant-numeric:tabular-nums;"><span style="color:#4CD890;background:#0A2818;border-radius:3px;">ρ = 0.262</span></td>
+          <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;font-variant-numeric:tabular-nums;color:#4CD890;background:#0A2818;border-radius:3px;">< .001</td>
+        </tr></tbody>
+  </table>
+
+  <!-- Model fit metrics -->
+  <div style="font-size:10px;font-weight:500;color:#6A8AAA;letter-spacing:0.07em;
+              text-transform:uppercase;margin-bottom:10px;">
+    Model Performance — Multivariate Linear Regression
+    (n = 6,344, 80/20 train/test split, 500 bootstrap CIs)
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);
+              gap:10px;margin-bottom:16px;">
+    <div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:12px 14px;">
+      <div style="font-size:20px;font-weight:500;color:#D0E4F8;">0.165</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">R²</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:12px 14px;">
+      <div style="font-size:20px;font-weight:500;color:#D0E4F8;">0.155</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">Adjusted R²</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:12px 14px;">
+      <div style="font-size:20px;font-weight:500;color:#D0E4F8;">1.182</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">RMSE</div>
+    </div><div style="background:#111E2E;border:0.5px solid #243447;
+        border-radius:8px;padding:12px 14px;">
+      <div style="font-size:20px;font-weight:500;color:#D0E4F8;">0.960</div>
+      <div style="font-size:11px;color:#6A8AAA;margin-top:2px;">MAE</div>
+    </div>
+  </div>
+
+  <!-- Coefficient table -->
+  <div style="font-size:10px;font-weight:500;color:#6A8AAA;letter-spacing:0.07em;
+              text-transform:uppercase;margin-bottom:8px;">
+    Regression Coefficients — Sorted by Absolute Effect Size
+  </div>
+  <div style="font-size:11px;color:#6A8AAA;margin-bottom:10px;">
+    β = standardised coefficient &nbsp;·&nbsp;
+    <span style="color:#4CD890;">positive β = higher SP Score</span> &nbsp;·&nbsp;
+    <span style="color:#E8724A;">negative β = lower SP Score</span> &nbsp;·&nbsp;
+    95% CI from 500 bootstrap iterations
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;
+                border:0.5px solid #243447;border-radius:10px;
+                overflow:hidden;margin-bottom:12px;">
+    <thead>
+      <tr>
+        <th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:left;border-bottom:0.5px solid #243447;white-space:nowrap;">Predictor</th><th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">β (Coeff)</th><th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">95% CI</th><th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">SE</th><th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">t-stat</th><th style="background:#172335;color:#6A8AAA;font-size:11px;font-weight:500;padding:8px 10px;text-align:center;border-bottom:0.5px solid #243447;white-space:nowrap;">p-value</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Maximum Gait Speed</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.2414</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[0.202, 0.281]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0206</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">11.719</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Education (HS and Above)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.2298</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[0.195, 0.263]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0180</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">12.784</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Gender (Male)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.2008</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[0.168, 0.232]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0168</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">11.963</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Race: Hispanic</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.1450</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.188, -0.105]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0207</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-7.015</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">BMI Score (Overweight/Obese)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.1009</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[0.067, 0.135]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0175</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">5.776</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Malnutrition (Positive)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0973</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.143, -0.051]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0231</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-4.213</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Depression Screen (Positive)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0746</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.114, -0.030]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0229</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-3.262</td>
+      <td style="padding:7px 10px;font-size:12px;color:#7BE8A8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">0.001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Anxiety Screen (Positive)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0730</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.111, -0.036]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0191</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-3.818</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Age Group (75+)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.0594</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[0.022, 0.091]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0179</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">3.314</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Residence (Urban)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0572</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.091, -0.022]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0173</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-3.300</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;background:#0A2818;border-radius:3px;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">< .001</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Comorbidity (High)</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0389</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.073, -0.005]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0183</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-2.131</td>
+      <td style="padding:7px 10px;font-size:12px;color:#A8D8B8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">0.033</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Race: White</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.0305</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.011, 0.073]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0222</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">1.376</td>
+      <td style="padding:7px 10px;font-size:12px;color:#6A8AAA;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">0.169</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:left;">Race: Other</td>
+      <td style="padding:7px 10px;font-size:12px;color:#E8724A;font-weight:500;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-0.0198</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.058, 0.022]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0192</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">-1.031</td>
+      <td style="padding:7px 10px;font-size:12px;color:#6A8AAA;
+          background:#111E2E;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">0.303</td>
+    </tr><tr>
+      <td style="padding:7px 10px 7px 14px;font-size:12px;color:#C0D4E8;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:left;">Race: Mixed</td>
+      <td style="padding:7px 10px;font-size:12px;color:#4CD890;font-weight:500;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">+0.0178</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">[-0.009, 0.042]</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">0.0138</td>
+      <td style="padding:7px 10px;font-size:12px;color:#B8CDE0;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:right;
+          font-variant-numeric:tabular-nums;">1.288</td>
+      <td style="padding:7px 10px;font-size:12px;color:#6A8AAA;
+          background:#152030;border-bottom:0.5px solid #1E2E42;text-align:center;
+          font-variant-numeric:tabular-nums;font-weight:500;">0.198</td>
+    </tr></tbody>
+  </table>
+
+  <div style="font-size:11px;color:#3A5870;padding-top:8px;
+              border-top:0.5px solid #243447;">
+    Descriptive p-values: Mann-Whitney U test per subset row (subset vs all others) ·
+    Maximum Gait Speed: Spearman ρ with SP Score ·
+    Regression: OLS on standardised features · 500 bootstrap iterations ·
+    Colour: <span style="color:#4CD890;">green p &lt; .001</span> ·
+    lighter green p &lt; .01 or p &lt; .05 ·
+    <span style="color:#6A8AAA;">grey = not significant</span> &nbsp;·&nbsp;
+    Age Group: 0 = Under 75, 1 = 75+ &nbsp;·&nbsp;
+    Education Group: 0 = No High School, 1 = HS and Above &nbsp;·&nbsp;
+    Residence: 0 = Rural, 1 = Urban.
+  </div>
+</div>
