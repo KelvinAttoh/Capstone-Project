@@ -210,26 +210,6 @@ direct frailty derivatives removed before modelling (18 columns dropped).
 **Explainability:** SHAP values computed for best model (XGBoost) using
 `TreeExplainer` for feature importance and `waterfall` plots per prediction class.
 
-### 4. Social Participation — Logistic Regression
-
-- **Target:** Socially Active (binary 0/1)
-- **Predictors:** Age Group, Gender, BMI Score, Education Group,
-  Comorbidity Positive, Race/Ethnicity, Depression Screen Positive,
-  Anxiety Screen Positive, Maximum Gait Speed, Malnutrition Positive
-- **Stratification:** Results reported Overall, Rural, Urban
-- **Statistical tests:** Chi-square (categorical), Mann-Whitney U (gait speed)
-- **Class imbalance:** RandomOverSampler on training set only
-- **Evaluation:** Accuracy, AUC-ROC, F1 per class
-
-### 5. Social Participation — Linear Regression
-
-- **Target:** Social Participation Score (continuous 0–5)
-- **Same predictors** as logistic model
-- **No resampling** — continuous target does not require balancing
-- **Evaluation:** R², Adjusted R², RMSE, MAE
-- **Inference:** Bootstrap CIs (500 iterations), t-statistics, p-values
-- **Coefficients sorted** by absolute effect size
-
 ---
 
 ## Results
@@ -254,18 +234,6 @@ direct frailty derivatives removed before modelling (18 columns dropped).
 
 > ⭐ XGBoost selected as best model based on weighted F1-score.
 
-### Social Participation — Logistic Regression (with RandomOverSampler)
-
-| Metric | Value |
-|--------|-------|
-| Accuracy | 69.3% |
-| AUC-ROC | 0.751 |
-| F1 (Not Active) | 43.1% |
-| F1 (Socially Active) | 78.9% |
-
-> AUC-ROC = 0.751 is the primary performance metric given class imbalance
-> (79.1% active vs 20.9% not active). Accuracy drop from ~82% to 69.3% after
-> ROS reflects genuine balanced learning, not model degradation.
 
 ---
 
